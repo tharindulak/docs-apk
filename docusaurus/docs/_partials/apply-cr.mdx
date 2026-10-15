@@ -1,0 +1,24 @@
+Apply CRs to the Kubernetes API server using the kubectl.
+
+<Tabs>
+<TabItem value="tab-0" label="Format">
+
+```command
+kubectl apply -f <path-to-crs>
+```
+
+</TabItem>
+<TabItem value="tab-1" label="Command">
+
+```command
+kubectl apply -f samples/
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+
+- The APIs should be created in the Kubernetes Gateway deployment namespace.
+
+:::

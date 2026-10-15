@@ -1,0 +1,162 @@
+---
+title: Via REST API
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.1.0/en/docs/create-api/create-and-deploy-apis/rest/create-rest-api-using-rest-api.md
+---
+
+Follow the instructions below to create a REST API using the APK deployer REST API.
+
+<Steps>
+
+## Develop a backend service {/* #step-1-develop-a-backend-service */}
+   
+To begin, it's essential to have a backend service that your API will interact with. The APK Configuration file is generated based on the API schema, which, in turn, relies on the functionality of your backend service. 
+
+In this guide, we will be using a backend deployed in a Kubernetes cluster. Prior to invoking the API, you will need to have this backend up and running.
+
+You can create this sample backend with the following command.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/wso2/apk/main/developer/tryout/samples/qsg-sample-backend.yaml
+```
+
+Wait for this pod to spin up. You can check its status using the following command.
+
+```bash
+kubectl get pods
+```
+
+## Generate an API schema file for your service. {/* #step-2-generate-an-api-schema-file-for-your-service */} 
+
+You will need an OpenAPI Specification 3.x that describes the structure and behavior of your API. This file serves as the foundation for configuring your API and is essential for generating the APK Configuration file.
+
+Download and save the sample [EmployeeServiceDefinition.json](https://raw.githubusercontent.com/wso2/apk/main/developer/tryout/samples/definitions/EmployeeServiceDefinition.json) file. This is the OAS definition of the API that we are going to deploy in APK.
+
+## Generate APK configuration file. {/* #step-3-generate-apk-configuration-file */}
+    
+This service generates an APK configuration file by providing your 3.x OpenAPI specification file. APK configuration file includes important API metadata, rate limiting details, security settings, and other necessary information about your API.
+
+The OpenAPI specification file can be provided as a local file or as a URL containing a definition file.
+
+1. As a local file
+
+```bash
+curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
+--header 'Host: api.am.wso2.com' \
+--form 'definition=@"/Users/user/EmployeeServiceDefinition.json"'
+```
+
+2. As a URL
+
+The following URLs contain valid sample definitions that you can use.
+
+OpenAPI Specification for REST API:
+
+```bash
+curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
+--header 'Host: api.am.wso2.com' \
+---form 'url="https://raw.githubusercontent.com/wso2/apk/main/developer/tryout/samples/definitions/EmployeeServiceDefinition.json"' \
+--form 'apiType="REST"'
+```
+
+The sample output of the generated APK Configuration (apk-conf) file will be as follows.
+
+```yaml
+name: "EmployeeServiceAPI"
+basePath: ""
+version: "3.14"
+type: "REST"
+defaultVersion: false
+endpointConfigurations:
+    production:
+        endpoint: "http://employee-service:8080"
+operations:
+- target: "/employees"
+    verb: "GET"
+    secured: true
+    scopes: []
+- target: "/employee"
+    verb: "POST"
+    secured: true
+    scopes: []
+```
+
+## Save the response to a file with the extension .apk-conf. {/* #step-5-save-the-response-to-a-file-with-the-extension-apk-conf */} 
+
+For example, you can save under the name, EmployeeService.apk-conf.
+
+## Update the APK configuration file. {/* #step-6-update-the-apk-configuration-file */}
+
+Review the content inside the apk-conf file and update it with additional API configurations as needed, such as rate limits, CORS configurations, etc.
+
+:::note
+
+To optimize the configuration process, APK presents a VS Code plugin designed to offer syntax highlighting and intelligent suggestions. This plugin simplifies the incorporation of rate limitations, new resources, and security configurations into your API. Adapt the contents of the APK Configuration file as needed. For further details, refer to the section on [Enhance Configuration with APK Config Language Support](../../../../api-management-overview/apk-conf-lang-support/)
+
+:::
+
+Update the APK configuration file with additional API configurations as needed, such as Rate limits, CORs configurations.
+
+## Deploy the API to a Kubernetes cluster. {/* #step-7-deploy-the-api-to-a-kubernetes-cluster */}
+
+Once you have crafted your APK Configuration File, you have two convenient options for deploying them. Choose the deployment option that best suits your development workflow. Whether you prefer the customization capabilities of the Config Generator and CI/CD pipeline or the simplicity and speed of the Config Deployer, APK empowers you with flexible and efficient API deployment methods in the Kubernetes ecosystem.
+
+
+### Option 1 - Deploy API using APK Config Deployer tool
+
+You can deploy the API directly into APK using API Schema definition and APK configuration file using the command below.
+
+```
+curl --location 'https://api.am.wso2.com:9095/api/deployer/1.1.0/apis/deploy' \
+--header 'Content-Type: multipart/form-data' \
+--header 'Accept: application/yaml' \
+--header 'Authorization: Bearer <Access Token From IDP>' \
+--form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+--form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"'
+```
+
+Once we invoke the above API, the response body would look like below.
+
+```yaml
+id: "048f821480bb19de6b64973a4b69109af286cfef"
+name: "EmployeeServiceAPI"
+basePath: "/test"
+version: "3.14"
+type: "REST"
+organization: "default"
+defaultVersion: false
+endpointConfigurations:
+    production:
+        endpoint: "http://employee-service:8080"
+operations:
+- target: "/employees"
+    verb: "GET"
+    secured: true
+    scopes: []
+- target: "/employee"
+    verb: "POST"
+    secured: true
+    scopes: []
+```
+
+### Option 2 - Generate K8s CRs using config generator tool and Deploy the API using Kubernetes Client
+
+You can generate K8s resources as a zip file from config-deployer service.
+
+```
+curl --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-k8s-resources' \
+--header 'Content-Type: multipart/form-data' \
+--header 'Accept: application/zip' \
+--form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+--form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"' \
+-k --output ./api-crds.zip
+```
+
+Once you have generated your K8s artifacts, the next step is to apply them to the Kubernetes API server. 
+
+```
+kubectl apply -f <path_to_extracted_zip_file>
+```
+
+</Steps>

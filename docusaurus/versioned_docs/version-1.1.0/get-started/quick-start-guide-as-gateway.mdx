@@ -1,0 +1,253 @@
+---
+title: Portal-Driven Design First API Management
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.1.0/en/docs/get-started/quick-start-guide-as-gateway.md
+---
+
+# Portal-Driven Design First API Management 
+
+This section is a step-by-step guide to creating, deploying, and invoking an API using the WSO2 APK with APIM Control Plane. It also covers portal-driven development, including creating an API from the UI.
+
+!!!NOTE
+    To set up the APK as an enterprise version, please follow the steps specified in both the [Install APK Enterprise](../setup/enterprise-apk-install) and [Install APIM APK Agent Enterprise](../setup/enterprise-apim-apk-agent-install.mdx) sections.
+
+## Before you begin...
+
+Install the <a href="../../setup/prerequisites" target="_blank">prerequisites</a> that are required to run the WSO2 API Platform for Kubernetes.
+
+!!!NOTE
+    If you already have an installation of the APK in your cluster, please remove the installation by following the steps specified in the <a href="../../setup/uninstall" target="_blank">Uninstall APK</a> section.
+
+### Create Kubernetes namespace
+
+```
+kubectl create ns apk
+```
+
+### Configure the hosts file
+
+Add a hostname mapping to the ```/etc/hosts``` file as follows.
+
+   | IP        | Domain name         |
+   | --------- | ------------------- |
+   | 127.0.0.1 | api.am.wso2.com     |
+   | 127.0.0.1 | am.wso2.com         |
+   | 127.0.0.1 | idp.am.wso2.com     |
+   | 127.0.0.1 | default.gw.wso2.com |
+
+<Steps>
+
+## Setup APIM Control Plane with APK {/* #step-1---setup-apim-control-plane-with-apk */}
+
+There are 3 components which you need to setup to get the APK working with APIM. They are,
+
+### Setup WSO2 API Manager Control Plane 4.3.0
+
+Setup WSO2 API Manager 4.3.0 in K8s cluster using Helm Charts.
+
+1. Create a new helm repository with the latest apim release using the following command. Let’s consider the ```<repository-name>``` as ```wso2apim```.
+
+    ```console
+    helm repo add wso2apim https://github.com/wso2/helm-apim/releases/download/cp-4.3.0
+    ```
+
+2. Execute the following command to update the helm repositories.
+
+    ```console
+    helm repo update
+    ```
+
+3. Consider ```apim``` as the ```<chart-name>``` for this guide. As the ```--version``` of this command, use the version of the release you used in point 1 above. It will take a few minutes for the deployment to complete.
+
+    <Tabs>
+    <TabItem value="tab-0" label="Command">
+
+    ```
+    helm install apim wso2apim/wso2am-cp --version 4.3.0 -f https://raw.githubusercontent.com/wso2/apk/main/helm-charts/samples/apim/cp/values.yaml -n apk
+    ```
+
+    </TabItem>
+    <TabItem value="tab-1" label="Format">
+
+    ```
+    helm install <chart-name> <repository-name>/wso2am-cp --version <version-of-APIM> -f <path-to-values.yaml-file>
+    ```
+
+    </TabItem>
+    </Tabs>
+
+4. Install NGINX Ingress Controller. Please refer to the <a href="https://kubernetes.github.io/ingress-nginx/deploy/#local-development-clusters" target="_blank">NGINX Ingress Controller</a> documentation for more information.
+
+:::note
+
+Please refer to the <a href="../../control-plane/apim-deploy/" target="_blank">Advanced Configuration for APIM</a> for more information.
+
+:::
+
+### Setup WSO2 APK Dataplane 1.1.0
+
+1. Create a new helm repository with the latest apk release using the following command. Let’s consider the ```<repository-name>``` as ```wso2apk```.
+
+    ```console
+    helm repo add wso2apk https://github.com/wso2/apk/releases/download/1.1.0
+    ```
+
+2. Execute the following command to update the helm repositories.
+
+    ```console
+    helm repo update
+    ```
+   
+3. Install the APK components and start WSO2 API Platform For Kubernetes. Consider ```apk``` as the ```<chart-name>``` for this guide. As the ```--version``` of this command, use the version of the release you used in point 1 above. It will take a few minutes for the deployment to complete.
+
+!!!NOTE
+    If you already have an installation of the APK in your cluster, please remove the installation by following the steps specified in the [Uninstall APK](../../setup/uninstall.md) section.
+
+
+<Tabs>
+<TabItem value="tab-0" label="Command">
+
+ ```
+ helm install apk wso2apk/apk-helm --version 1.1.0 -f https://raw.githubusercontent.com/wso2/apk/main/helm-charts/samples/apk/cp-enabled-values.yaml -n apk
+ ``` 
+
+</TabItem>
+<TabItem value="tab-1" label="Format">
+
+ ```
+ helm install <chart-name> <repository-name>/apk-helm --version <version-of-APK> -f <path-to-values.yaml-file>
+ ```
+
+</TabItem>
+</Tabs>
+
+:::note
+
+Please refer to the [Advance Configuration for APK](../apk-deploy.md) for more information.
+
+:::
+
+
+### Setup WSO2 APIM-APK Agent 1.1.0
+
+1. Create a new helm repository with the latest apim apk agent release using the following command. Let’s consider the ```<repository-name>``` as ```wso2apkagent``` for this guide.
+
+    ```console
+    helm repo add wso2apkagent https://github.com/wso2/product-apim-tooling/releases/download/1.1.0
+    ```
+
+2. Execute the following command to update the helm repositories.
+
+    ```console
+    helm repo update
+    ```
+
+3. Install the APIM APK Agent components and start WSO2 API Platform For Kubernetes. Consider ```apk``` as the ```<chart-name>``` for this guide. As the ```--version``` of this command, use the version of the release you used in point 1 above. It will take a few minutes for the deployment to complete.
+
+    <Tabs>
+    <TabItem value="tab-0" label="Command">
+
+    ```
+    helm install apim-apk-agent wso2apkagent/apim-apk-agent --version 1.1.0 -f https://raw.githubusercontent.com/wso2/apk/main/helm-charts/samples/apim-apk-agent/values.yaml -n apk
+    ```
+
+    </TabItem>
+    <TabItem value="tab-1" label="Format">
+
+    ```
+    helm install <chart-name> <repository-name>/apim-apk-agent --version <version-of-APK-Agent> -f <path-to-values.yaml-file>
+    ```
+
+    </TabItem>
+    </Tabs>
+
+:::note
+
+Please refer to the [Advance Configuration for agent](../apim-apk-agent-deploy.md) for more information.
+
+:::
+
+### Verify the deployment
+
+Now you can verify the deployment by executing the following command. You will see the status of the pods as follows once completed.
+
+<Tabs>
+<TabItem value="tab-0" label="Command">
+
+```
+kubectl get pods -n apk
+```
+
+</TabItem>
+</Tabs>
+
+## Create and Deploy the API {/* #step-2---create-and-deploy-the-api */}
+
+### Create Deploy and Publish the API
+
+1. Login to the Publisher Console ([https://am.wso2.com/publisher](https://am.wso2.com/publisher)) of the WSO2 API Manager.
+2. Click on the `REST API` button and then use `Import Open API` option.
+3. Provide the OpenAPI definition of the API and click `Next`. Select OpenAPI URL and provide `https://petstore3.swagger.io/api/v3/openapi.json` as the URL. Click Next.
+4. Edit the information as given below and click Create.
+
+   | Field    | Sample value                        |
+      |----------|-------------------------------------|
+   | Name     | SwaggerPetstore                     |
+   | Context  | /petstore                           |
+   | Version  | 1.0.0                               |
+   | Endpoint | https://petstore3.swagger.io/api/v3 |
+
+5. Navigate to the Deploy section and click Deployments. 
+6. Click Deploy New Revision. 
+7. Optionally, provide a description for the revision. 
+8. Select the APK Gateways in which you want to deploy the API and click Deploy. 
+9. Navigate to **Life Cycle** tab. Then click **Publish** to publish the API. 
+10. To verify the API deployment in the APK Gateway, execute the following command. You will see the status of the deployed apis as follows once completed.
+
+```bash
+   kubectl get apis -n apk
+```
+
+
+### Create Application and Subscribe to the API
+
+1. Login to the Developer Portal ([https://am.wso2.com/devportal](https://am.wso2.com/devportal)) of the WSO2 API Manager.
+2. Click on the `Applications` tab and then use `ADD NEW APPLICATION` option.
+3. Provide the information as given below and click `Save`.
+
+     &lt;html>
+        <table>
+        <th>Field</th><th>Value</th>
+        <tr><td>Application Name</td><td>SwaggerPetstoreApp</td></tr>
+        <tr><td>Per Token Quota</td><td>10PerMin</td></tr>
+        <tr><td>Description</td><td>Petstore Application</td></tr>
+        </table>
+     &lt;/html>
+
+4. Click **Subscriptions** to subscribe to the created SwaggerPetstore API.
+5. Click **Production Keys** or **Sandbox Keys** based on the environment for which you need to generate keys.
+   Let's assume that you are working in a production environment. Therefore, click **Production Keys**.
+5. Click **Generate Keys** to create an application Access Token with relevant scopes.
+6. To verify the Application and Subscription creation in the APK Gateway, execute the following command. You will see the status of the deployed application as follows once completed.
+
+    ```bash
+    kubectl get subscriptions -n apk
+    kubectl get applications -n apk
+    ```
+
+!!! Important If you are expecting a high scale of subscriptions and applications in your deployment
+      The database storage option is offered in APK for deployments with a high number of subscriptions and applications, especially for enterprise use cases. Because, by default, subscription and application-related data are stored as CRs (Custom Resources) in etcd. However, as the number of subscriptions and applications increases, it can lead to overutilization of etcd memory, subsequently degrading the performance of your API gateway. This degradation can impact the deployment, undeployment, and update times ultimately affecting the reliability of applications and subscriptions.
+      
+      By opting for the database option offered in APK for deployments with high numbers of subscriptions and applications, you can mitigate issues related to etcd storage, such as memory overutilization and performance degradation. This ensures smoother deployment, undeployment, and update processes, ultimately enhancing the reliability of your applications and subscriptions. For further information and assistance, please contact our sales team [https://wso2.com/contact/?ref=consulting](https://wso2.com/contact/?ref=consulting).
+
+
+## Invoke the API {/* #step-3---invoke-the-api */}
+
+Use the following command to invoke the API using the access token generated in the previous step.
+
+```bash
+    curl -X GET "https://default.gw.wso2.com:9095/petstore/1.0.0/pet/findByStatus?status=available" -H "Authorization: Bearer <access-token>" -k
+```
+
+</Steps>

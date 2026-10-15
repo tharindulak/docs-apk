@@ -1,0 +1,26 @@
+---
+title: Subscription
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.2.0/en/docs/catalogs/samples/subscription.md
+---
+
+## Subscription Sample
+
+The following is a sample `Subscription` CR.
+
+```
+apiVersion: cp.wso2.com/v1alpha2
+kind: Subscription
+metadata:
+  name: sample-subscription
+spec:
+  subscriptionStatus: ACTIVE
+  organization: carbon.super
+  api:
+    name: AppSubTestAPI
+    version: ^1.*|^v1$
+  ratelimitRef:
+    name : llm-backend-rl-subs
+    level: subscription
+```

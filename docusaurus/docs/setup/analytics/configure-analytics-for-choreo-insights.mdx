@@ -1,0 +1,103 @@
+---
+title: Configure Analytics for Choreo Insights
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.3.0/en/docs/setup/analytics/configure-analytics-for-choreo-insights.md
+---
+
+# Configure Analytics for Choreo Insights
+
+<Steps>
+
+## Generate On-prem Key {/* #step-1---generate-on-prem-key */}
+
+1. Sign in to [Choreo](https://console.choreo.dev/login/).
+
+2. Go to `Settings > On-prem Keys` and click on `Generate Key` button.
+
+3. Copy the generated on-prem key.
+
+
+## Configure APK {/* #step-2---configure-apk */}
+
+1. Create a secret containing the Choreo Auth URL and the Choreo token using the following command. Replace the ```choreo-on-prem-key``` value with your on-prem key generated in Step 1.
+
+    <Tabs>
+    <TabItem value="tab-0" label="Sample Command">
+
+    ```bash
+    kubectl create secret generic choreo-analytics-secret --from-literal=authToken='<choreo-on-prem-key>' --from-literal=authURL='https://analytics-event-auth.choreo.dev/auth/v1' -n apk
+    ```
+
+    </TabItem>
+    <TabItem value="tab-1" label="Command Format">
+
+    ```bash
+    kubectl create secret generic <secret-name> --from-literal=authToken='<choreo-on-prem-key>' --from-literal=authURL='https://analytics-event-auth.choreo.dev/auth/v1' -n <namespace>
+    ```
+
+    </TabItem>
+    </Tabs>
+
+2. Follow the instructions outlined in the <a href="../../../setup/Customize-Configurations" target="_blank">customize configurations section</a>. These instructions will guide you through the process of acquiring the `values.yaml` file, which you will then use to tailor the analytics configurations to your specific needs. 
+3. Replace `secret-name` in the following configuration with the name of the secret you created in the previous step.
+```yaml
+analytics:
+ enabled: true
+ publishers:
+ - enabled: true
+   type: "default"
+   secretName: <secret-name>
+```
+
+4. Open the `values.yaml` file, and add the above configuration to the `gatewayRuntime` section under `dp`. Your values.yaml file should have a structure as follows:
+   
+```yaml
+wso2:
+  ...
+  apk:
+    ...
+    dp:
+      ...
+      gatewayRuntime:
+        analytics:
+          enabled: true
+          publishers:
+          - enabled: true
+            type: "default"
+            secretName: <secret-name>
+```
+Then redeploy the helm chart with the changes in `values.yaml`.
+
+### Optional - Adding Multiple Publishers
+
+You can also set multiple publishers for analytics as follows. Replace `choreo-secret-name` and `moesif-secret-name` with the appropriate values.
+
+```yaml
+gatewayRuntime:
+  analytics:
+    enabled: true
+    publishers:
+      - enabled: true
+        type: "default"
+        secretName: <choreo-secret-name>
+      - enabled: true
+        type: "elk"
+      - enabled: true
+        type: "moesif"
+        secretName: <moesif-secret-name>
+```
+
+## View Analytics Data {/* #step-3---view-analytics-data */}
+
+1. After setting up the enforcer, invoke a few requests (success and failure) for a deployed API.
+
+2. Go to [Choreo Insights](https://console.choreo.dev/insights) and select the correct environment to view the analytics data.
+
+Following are some of the graphs generated in the Choreo Insights.
+
+[![Choreo Insights Overview](../../../assets/img/analytics/choreo-insights-overview.png)](../../../assets/img/analytics/choreo-insights-overview.png)
+
+[![Choreo Insights Latency](../../../assets/img/analytics/choreo-insights-latency.png)](../../../assets/img/analytics/choreo-insights-latency.png)
+
+</Steps>

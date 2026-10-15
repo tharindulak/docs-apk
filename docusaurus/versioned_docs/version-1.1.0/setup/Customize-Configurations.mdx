@@ -1,0 +1,59 @@
+---
+title: Customize Configurations
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.1.0/en/docs/setup/Customize-Configurations.md
+---
+
+To customize configurations in the Helm deployment, you need to create and modify the `values.yaml` file. Here's how you can do it:
+
+1. **Download `values.yaml` File:**
+
+    To obtain the `values.yaml` file, you can use the `helm show values` command. Replace `<repository-name>` with the actual repository name and `<version-of-APK>` with the desired version of the APK. Run the following command:
+
+    <Tabs>
+    <TabItem value="tab-0" label="Command">
+
+    ```
+    helm show values wso2apk/apk-helm --version 1.1.0  > values.yaml
+    ```
+
+    </TabItem>
+    <TabItem value="tab-1" label="Format">
+
+    ```
+    helm show values <repository-name>/apk-helm --version <version-of-APK> > values.yaml
+    ```
+
+    </TabItem>
+    </Tabs>
+
+2. **Modify the Configuration:**
+
+    Once you have the `values.yaml` file, you can modify the configuration parameters according to your requirements.
+
+3. **Deploy the APK with Customized Configuration:**
+
+    To deploy the APK using the customized configuration, use the `helm install` command. Replace `<chart-name>`, `<repository-name>`, `<version-of-APK>`, and `<path-to-values.yaml-file>` with appropriate values. Run the following command:
+
+	<Tabs>
+	<TabItem value="tab-0" label="Command">
+
+
+
+	</TabItem>
+	</Tabs>
+		```
+		helm install apk-test wso2apk/apk-helm --version 1.1.0 -f values.yaml
+		```
+
+    <Tabs>
+    <TabItem value="tab-0" label="Format">
+
+
+
+    </TabItem>
+    </Tabs>
+		```
+		helm install <chart-name> <repository-name>/apk-helm --version <version-of-APK> -f <path-to-values.yaml-file>
+		```

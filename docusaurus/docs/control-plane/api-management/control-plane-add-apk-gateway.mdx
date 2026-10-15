@@ -1,0 +1,39 @@
+---
+title: Add Kubernetes Gateway to API Manager
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.3.0/en/docs/control-plane/api-management/control-plane-add-apk-gateway.md
+---
+
+# Add Kubernetes Gateway to API Manager
+
+This guide provides instructions on how to add a Kubernetes Gateway dynamically to WSO2 API Manager using Admin Portal. 
+Follow the instructions below to add a Kubernetes Gateway to API Manager.
+
+1. Log in to the API Manager Admin Portal using the following URL and admin credentials.
+
+<Tabs>
+<TabItem value="tab-0" label="Command">
+
+ ```
+  https://am.wso2.com/admin
+ ```
+
+</TabItem>
+<TabItem value="tab-1" label="Format">
+
+ ```
+  https://<APIM_HOST>:<APIM_PORT>/admin
+ ```
+
+</TabItem>
+</Tabs>
+
+2. Click on the **Gateways** menu and then click on **Add Gateway Environment**.
+3. Provide the following details and click **Save**.
+    - **Name**: Enter a name for the gateway environment.
+    - **Display Name**: Enter a display name for the gateway environment.
+    - **Description**: Enter a description for the gateway environment.
+    - **Gateway Type**: Select the type of the gateway environment as **APK**.
+    - **Type**: Select the type of the gateway environment as **Production** or **Sandbox** or **hybrid**.
+    - **Host**: Enter the service URL hostname of the gateway environment.

@@ -1,0 +1,22 @@
+---
+title: Backend
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.0.0/en/docs/catalogs/samples/backend.md
+---
+
+## Backend Sample
+
+The following is a sample CR for creating a Backend.
+```
+apiVersion: dp.wso2.com/v1alpha1
+kind: Backend
+metadata:
+  name: http-bin-backend
+spec:
+  services:
+  - host: httpbin.org
+    port: 80
+```
+
+Refer [Manage Service Endpoint](../../create-api/manage-service-endpoint/manage-certificate.mdx) for more information on how to configure backend services.

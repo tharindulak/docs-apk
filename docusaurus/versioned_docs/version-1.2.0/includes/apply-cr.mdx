@@ -1,0 +1,31 @@
+---
+title: Apply cr
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.2.0/en/docs/includes/apply-cr.md
+---
+
+Apply CRs to the Kubernetes API server using the kubectl.
+
+<Tabs>
+<TabItem value="tab-0" label="Format">
+
+```command
+kubectl apply -f <path-to-crs>
+```
+
+</TabItem>
+<TabItem value="tab-1" label="Command">
+
+```command
+kubectl apply -f samples/
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+
+- The APIs should be created in the APK deployment namespace.
+
+:::

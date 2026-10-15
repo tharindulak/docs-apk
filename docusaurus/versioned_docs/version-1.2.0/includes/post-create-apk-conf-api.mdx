@@ -1,0 +1,67 @@
+---
+title: Post create apk conf api
+deployment_options:
+  - Self-hosted
+custom_edit_url: https://github.com/wso2/docs-apk/edit/1.2.0/en/docs/includes/post-create-apk-conf-api.md
+---
+
+## Step 7. Deploy the API to a Kubernetes cluster.
+
+Once you have crafted your APK Configuration File, you have two convenient options for deploying them. Choose the deployment option that best suits your development workflow. Whether you prefer the customization capabilities of the Config Generator and CI/CD pipeline or the simplicity and speed of the Config Deployer, APK empowers you with flexible and efficient API deployment methods in the Kubernetes ecosystem.
+
+
+### Option 1 - Deploy API using APK Config Deployer tool
+
+You can deploy the API directly into APK using API Schema definition and APK configuration file using the command below.
+
+```
+curl --location 'https://api.am.wso2.com:9095/api/deployer/1.2.0/apis/deploy' \
+--header 'Content-Type: multipart/form-data' \
+--header 'Accept: application/yaml' \
+--header 'Authorization: Bearer <Access Token From IDP>' \
+--form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+--form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"'
+```
+
+Once we invoke the above API, the response body would look like below.
+
+```yaml
+id: "048f821480bb19de6b64973a4b69109af286cfef"
+name: "EmployeeServiceAPI"
+basePath: "/test"
+version: "3.14"
+type: "REST"
+organization: "default"
+defaultVersion: false
+endpointConfigurations:
+    production:
+        endpoint: "http://employee-service:8080"
+operations:
+- target: "/employee"
+    verb: "GET"
+    secured: true
+    scopes: []
+- target: "/employee"
+    verb: "POST"
+    secured: true
+    scopes: []
+```
+
+### Option 2 - Generate K8s CRs using config generator tool and Deploy the API using Kubernetes Client
+
+You can generate K8s resources as a zip file from config-deployer service.
+
+```
+curl --location 'https://api.am.wso2.com:9095/api/configurator/1.2.0/apis/generate-k8s-resources' \
+--header 'Content-Type: multipart/form-data' \
+--header 'Accept: application/zip' \
+--form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+--form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"' \
+-k --output ./api-crds.zip
+```
+
+Once you have generated your K8s artifacts, the next step is to apply them to the Kubernetes API server. 
+
+```
+kubectl apply -f <path_to_extracted_zip_file>
+```

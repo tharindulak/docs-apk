@@ -1,0 +1,1134 @@
+{
+  "docs": [
+    {
+      "type": "doc",
+      "id": "index",
+      "label": "Home"
+    },
+    {
+      "type": "category",
+      "label": "Get Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "get-started/quick-start-guide",
+          "label": "Quick Start"
+        },
+        {
+          "type": "category",
+          "label": "Quick Start With Control Plane",
+          "items": [
+            {
+              "type": "doc",
+              "id": "get-started/quick-start-guide-with-cp",
+              "label": "Developer-Driven Design First"
+            },
+            {
+              "type": "doc",
+              "id": "get-started/quick-start-guide-as-gateway",
+              "label": "Portal-Driven Design First"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API Management",
+      "items": [
+        {
+          "type": "category",
+          "label": "Overview - API Management in APK Dataplane",
+          "items": [
+            {
+              "type": "doc",
+              "id": "api-management-overview/create-api-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "api-management-overview/tools-for-api-development",
+              "label": "Via REST API"
+            },
+            {
+              "type": "doc",
+              "id": "api-management-overview/create-api-using-crs",
+              "label": "Via CRs"
+            },
+            {
+              "type": "doc",
+              "id": "api-management-overview/apk-conf-lang-support",
+              "label": "APK Config Language Support Plugin"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Develop and Deploy API",
+          "items": [
+            {
+              "type": "category",
+              "label": "Rest APIs",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/rest/create-rest-api-using-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/rest/create-rest-api-using-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "GraphQL APIs",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/graphql/create-graphql-api-using-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/graphql/create-graphql-api-using-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "AI APIs",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/ai/ai-api-overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/ai/create-ai-api-using-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/ai/create-ai-api-using-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "gRPC APIs",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/grpc/overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-deploy-apis/grpc/create-grpc-api-using-crs",
+                  "label": "Via CRs"
+                },
+                {
+                  "type": "category",
+                  "label": "Via REST API",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "create-api/create-and-deploy-apis/grpc/create-grpc-api-using-rest-api",
+                      "label": "API with one proto file"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "create-api/create-and-deploy-apis/grpc/create-grpc-api-with-multiple-proto-files",
+                      "label": "API with multiple proto files"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Undeploy API",
+          "items": [
+            {
+              "type": "doc",
+              "id": "undeploy/undeploy-rest-api",
+              "label": "Via REST API"
+            },
+            {
+              "type": "doc",
+              "id": "undeploy/undeploy-crs",
+              "label": "Via CRs"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Manage Endpoint",
+          "items": [
+            {
+              "type": "doc",
+              "id": "develop-and-deploy-api/endpoints/prod-sand-endpoints",
+              "label": "Define Endpoint"
+            },
+            {
+              "type": "doc",
+              "id": "create-api/manage-service-endpoint/manage-certificate",
+              "label": "Manage Certificate"
+            },
+            {
+              "type": "category",
+              "label": "Manage Security",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/manage-service-endpoint/manage-security-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/manage-service-endpoint/manage-security-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Manage Resiliency",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/manage-service-endpoint/manage-resiliency-timeout",
+                  "label": "Timeout"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/manage-service-endpoint/manage-resiliency-retry-policy",
+                  "label": "Retry Policy"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/manage-service-endpoint/manage-resiliency-circuit-breaker",
+                  "label": "Circuit Breaker"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "API Policies",
+          "items": [
+            {
+              "type": "doc",
+              "id": "create-api/create-and-attach-api-policies/api-policies-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "category",
+              "label": "Interceptor Service",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/interceptors/interceptors-overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/interceptors/interceptors-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/interceptors/interceptors-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Backend JWT Token Manipulation",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/backend-jwt-token-manipulation/overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/backend-jwt-token-manipulation/backend-jwt-token-manipulation-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/backend-jwt-token-manipulation/backend-jwt-token-manipulation-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "CORS",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/cors/enable-cors-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/cors/enable-cors-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Header Modification",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/header-modifier-filters/overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/header-modifier-filters/header-modifier-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/header-modifier-filters/header-modifier-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Request Mirroring",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/mirror-request-filters/overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/mirror-request-filters/mirror-request-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/mirror-request-filters/mirror-request-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Request Redirection",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/redirect-request-filters/redirect-request-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/create-and-attach-api-policies/redirect-request-filters/redirect-request-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Rate Limiting",
+          "items": [
+            {
+              "type": "doc",
+              "id": "create-api/rate-limiting/rate-limiting-policy-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "category",
+              "label": "Simple Rate Limiting",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "create-api/rate-limiting/add-new-rate-limiting-policies-via-rest-api",
+                  "label": "Via REST API"
+                },
+                {
+                  "type": "doc",
+                  "id": "create-api/rate-limiting/add-new-rate-limiting-policies-via-crs",
+                  "label": "Via CRs"
+                }
+              ]
+            },
+            {
+              "type": "doc",
+              "id": "create-api/rate-limiting/custom-rate-limiting",
+              "label": "Custom Rate Limiting"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "API Security",
+          "items": [
+            {
+              "type": "doc",
+              "id": "develop-and-deploy-api/security/generate-access-token",
+              "label": "Generate Access Token"
+            },
+            {
+              "type": "category",
+              "label": "Authentication",
+              "items": [
+                {
+                  "type": "category",
+                  "label": "Enable API Security",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "develop-and-deploy-api/security/authentication/enable-api-security/oauth2",
+                      "label": "OAuth2"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "develop-and-deploy-api/security/authentication/enable-api-security/mtls",
+                      "label": "Mutual SSL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "API Versions",
+          "items": [
+            {
+              "type": "doc",
+              "id": "develop-and-deploy-api/api-versions/create-an-api-version",
+              "label": "Create an API Version"
+            },
+            {
+              "type": "doc",
+              "id": "develop-and-deploy-api/api-versions/default-version",
+              "label": "Default Version"
+            },
+            {
+              "type": "doc",
+              "id": "develop-and-deploy-api/api-versions/semver-based-intelligent-routing",
+              "label": "Semantic Versioning Based Intelligent Routing"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "develop-and-deploy-api/api-properties/api-properties",
+          "label": "API Properties"
+        },
+        {
+          "type": "doc",
+          "id": "develop-and-deploy-api/api-scopes/api-scopes",
+          "label": "API Scopes"
+        },
+        {
+          "type": "doc",
+          "id": "develop-and-deploy-api/api-definition-endpoint/api-definition-endpoint",
+          "label": "API Definition Endpoint"
+        },
+        {
+          "type": "doc",
+          "id": "develop-and-deploy-api/token-issuers/token-issuers",
+          "label": "Token Issuers"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Control Plane",
+      "items": [
+        {
+          "type": "category",
+          "label": "APK Control Plane",
+          "items": [
+            {
+              "type": "doc",
+              "id": "control-plane/overview",
+              "label": "Overview"
+            },
+            {
+              "type": "category",
+              "label": "API Management",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "control-plane/api-management/control-plane-api-management-overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "category",
+                  "label": "Develop and Deploy API",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "control-plane/api-management/control-plane-create-and-deploy-rest-apis",
+                      "label": "Create REST APIs"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "control-plane/api-management/control-plane-create-and-deploy-graphql-apis",
+                      "label": "Create GraphQL APIs"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "control-plane/api-management/control-plane-create-and-deploy-ai-apis",
+                      "label": "Create AI APIs"
+                    }
+                  ]
+                },
+                {
+                  "type": "doc",
+                  "id": "control-plane/api-management/control-plane-add-apk-gateway",
+                  "label": "Add APK Gateway"
+                },
+                {
+                  "type": "doc",
+                  "id": "control-plane/api-management/control-plane-create-application-and-subscription",
+                  "label": "Create Application and Subscribe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "APK as a Gateway in API Manager",
+          "items": [
+            {
+              "type": "doc",
+              "id": "control-plane/apk-as-gateway-in-apim/apk-as-gateway-in-apim-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "control-plane/apk-as-gateway-in-apim/apk-as-gateway-in-apim-qsg",
+              "label": "Quick Start Guide"
+            },
+            {
+              "type": "category",
+              "label": "API Management",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-api-management-overview",
+                  "label": "Overview"
+                },
+                {
+                  "type": "category",
+                  "label": "Develop and Deploy API",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-create-and-deploy-rest-apis",
+                      "label": "Create REST APIs"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-create-and-deploy-graphql-apis",
+                      "label": "Create GraphQL APIs"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-create-and-deploy-ai-apis",
+                      "label": "Create AI APIs"
+                    }
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Add API Policies",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "control-plane/api-management/api-policies/api-policies-overview",
+                      "label": "API Policies Overview"
+                    },
+                    {
+                      "type": "doc",
+                      "id": "control-plane/api-management/api-policies/attaching-api-policies",
+                      "label": "Attach Policies"
+                    },
+                    {
+                      "type": "category",
+                      "label": "Default Policies",
+                      "items": [
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/add-header",
+                          "label": "Add Specific Headers to Request/Response"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/remove-header",
+                          "label": "Remove Specific Headers from Request/Response"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/interceptor-service",
+                          "label": "Message Transformation using Interceptor APIPolicy"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/mirror-request",
+                          "label": "Request Mirroring"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/redirect-request",
+                          "label": "Request Redirection"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "control-plane/api-management/api-policies/backend-jwt",
+                          "label": "Backend JWT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "doc",
+                  "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-add-apk-gateway",
+                  "label": "Add APK Gateway"
+                },
+                {
+                  "type": "doc",
+                  "id": "control-plane/apk-as-gateway-in-apim/api-management/control-plane-create-application-and-subscription",
+                  "label": "Create Application and Subscribe"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Advanced Configuration",
+          "items": [
+            {
+              "type": "doc",
+              "id": "control-plane/apim-deploy",
+              "label": "API Manager Control Plane"
+            },
+            {
+              "type": "doc",
+              "id": "control-plane/apk-deploy",
+              "label": "APK Data Plane"
+            },
+            {
+              "type": "category",
+              "label": "APIM APK Agent",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "control-plane/apim-apk-agent-deploy",
+                  "label": "Deployment"
+                },
+                {
+                  "type": "doc",
+                  "id": "control-plane/apim-apk-agent-prometheus",
+                  "label": "Prometheus Configuration"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Catalogs",
+      "items": [
+        {
+          "type": "category",
+          "label": "CRD Catalog",
+          "items": [
+            {
+              "type": "doc",
+              "id": "catalogs/kubernetes-crds",
+              "label": "Overview - CRD Catalog"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/api_types",
+              "label": "API"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/apipolicy_types",
+              "label": "APIPolicy"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/samples/http-route",
+              "label": "HTTPRoute"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/gql_routes_types",
+              "label": "GraphQL Route"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/samples/grpc-route",
+              "label": "GRPCRoute"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/authentication_types",
+              "label": "Authentication"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/backend_types",
+              "label": "Backend"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/backendjwt_types",
+              "label": "BackendJWT"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/interceptorservice_types",
+              "label": "Interceptor Service"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/ratelimitpolicy_types",
+              "label": "RateLimitPolicy"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/scope_types",
+              "label": "Scope"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/tokenIssuer_types",
+              "label": "Token Issuer"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/subscription_types",
+              "label": "Subscription"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/application_types",
+              "label": "Application"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/application_mapping_types",
+              "label": "Application Mapping"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/aiprovider_types",
+              "label": "AI Provider"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/crds/airatelimitpolicy_types",
+              "label": "AI Rate Limit Policy"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Product API Catalog",
+          "items": [
+            {
+              "type": "doc",
+              "id": "catalogs/api-catalog",
+              "label": "Overview - Product API Catalog"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/api-reference-config-deployer",
+              "label": "Config Deployer APIs"
+            },
+            {
+              "type": "doc",
+              "id": "catalogs/api-reference-config-generator",
+              "label": "Config Generator APIs"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "catalogs/config-catalog",
+          "label": "Helm Configuration Catalog"
+        },
+        {
+          "type": "doc",
+          "id": "catalogs/apk-conf",
+          "label": "APK Conf Catalog"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Setup",
+      "items": [
+        {
+          "type": "doc",
+          "id": "setup/prerequisites",
+          "label": "Prerequisites"
+        },
+        {
+          "type": "doc",
+          "id": "setup/install",
+          "label": "Install Dataplane"
+        },
+        {
+          "type": "doc",
+          "id": "setup/install-with-cp",
+          "label": "Install Control Plane with Dataplane"
+        },
+        {
+          "type": "category",
+          "label": "Install Enterprise Products",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/enterprise-apk-install",
+              "label": "Install APK Dataplane"
+            },
+            {
+              "type": "doc",
+              "id": "setup/enterprise-apim-apk-agent-install",
+              "label": "Install APIM APK Agent"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "setup/uninstall",
+          "label": "Uninstall"
+        },
+        {
+          "type": "category",
+          "label": "Deployment Patterns",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/deployment/deployment-patterns-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "setup/deployment/apk-data-plane-deployment-patterns",
+              "label": "APK Data Plane"
+            },
+            {
+              "type": "doc",
+              "id": "setup/deployment/apk-with-apim-cp-deployment-patterns",
+              "label": "APK Data Plane with API Manager Control Plane"
+            },
+            {
+              "type": "doc",
+              "id": "setup/deployment/apk-as-gateway-in-apim-deployment-patterns",
+              "label": "APK as a Gateway in API Manager"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "CI/CD",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/cicd/overview",
+              "label": "CI/CD for APIs - Overview"
+            },
+            {
+              "type": "doc",
+              "id": "setup/cicd/building-a-pipeline",
+              "label": "Building a GitOps Workflow for APIs With WSO2 APK"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "setup/migration",
+          "label": "Migration"
+        },
+        {
+          "type": "doc",
+          "id": "setup/Customize-Configurations",
+          "label": "Customize Configurations"
+        },
+        {
+          "type": "doc",
+          "id": "setup/production-deployment-guideline",
+          "label": "Production Deployment Guidelines"
+        },
+        {
+          "type": "doc",
+          "id": "setup/cert-manager",
+          "label": "Customize Cert-Manager"
+        },
+        {
+          "type": "category",
+          "label": "Configure Permissions",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/configuring-permissions/configuring-roles-and-rolebindings",
+              "label": "Customize Roles and RoleBindings"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "setup/webhook-customization",
+          "label": "Customize Webhook Configurations"
+        },
+        {
+          "type": "doc",
+          "id": "setup/configure-hpa",
+          "label": "Configure HPA for gateway"
+        },
+        {
+          "type": "doc",
+          "id": "setup/deploy-in-openshift",
+          "label": "Deploy in OpenShift"
+        },
+        {
+          "type": "doc",
+          "id": "setup/multi-env-deployment-on-apk",
+          "label": "Multi-environment Deployment on Gateway"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Administration",
+      "items": [
+        {
+          "type": "category",
+          "label": "Configure Identity Provider",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/identity-platform/idp/idp-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "setup/identity-platform/idp/non-production-idp",
+              "label": "Non-production"
+            },
+            {
+              "type": "doc",
+              "id": "setup/identity-platform/idp/asgardeo-idp",
+              "label": "Asgardeo"
+            },
+            {
+              "type": "doc",
+              "id": "setup/identity-platform/idp/auth0-idp",
+              "label": "Auth0"
+            },
+            {
+              "type": "doc",
+              "id": "setup/identity-platform/idp/third-party-idp",
+              "label": "Any third-party IdP"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Configure Analytics",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/analytics/configure-analytics-for-choreo-insights",
+              "label": "Choreo Insights"
+            },
+            {
+              "type": "doc",
+              "id": "setup/analytics/configure-analytics-for-elk-stack",
+              "label": "ELK Stack"
+            },
+            {
+              "type": "doc",
+              "id": "setup/analytics/configure-analytics-for-moesif",
+              "label": "Moesif"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Configure Listeners",
+          "items": [
+            {
+              "type": "doc",
+              "id": "setup/listeners/configure-gateway-listeners",
+              "label": "Configure Gateway Listeners"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Configure Logs",
+          "items": [
+            {
+              "type": "doc",
+              "id": "administration/configurations/configure-logs-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "administration/configurations/configure-logs-adapter",
+              "label": "Adapter"
+            },
+            {
+              "type": "doc",
+              "id": "administration/configurations/configure-logs-enforcer",
+              "label": "Enforcer"
+            },
+            {
+              "type": "doc",
+              "id": "administration/configurations/configure-logs-router",
+              "label": "Router"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "administration/distributed-tracing",
+          "label": "Configure Distributed Tracing"
+        },
+        {
+          "type": "doc",
+          "id": "administration/prometheus-metric-support",
+          "label": "Configure Prometheus Metric Support"
+        },
+        {
+          "type": "category",
+          "label": "Configure AI Providers",
+          "items": [
+            {
+              "type": "doc",
+              "id": "administration/aiproviders/configure-ai-providers-overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "administration/aiproviders/configure-ai-providers-customai",
+              "label": "Custom AI Provider"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "administration/airatelimitpolicy/configure-ai-ratelimit-policies-overview",
+          "label": "Configure AI Ratelimit policies"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "About APK",
+      "items": [
+        {
+          "type": "doc",
+          "id": "about-apk/what-is-apk",
+          "label": "What is APK?"
+        },
+        {
+          "type": "doc",
+          "id": "about-apk/about-this-release",
+          "label": "About This Release"
+        },
+        {
+          "type": "doc",
+          "id": "about-apk/architecture",
+          "label": "Architecture"
+        },
+        {
+          "type": "category",
+          "label": "Performance Test Results",
+          "items": [
+            {
+              "type": "doc",
+              "id": "about-apk/performance-test-results/overview",
+              "label": "Overview"
+            },
+            {
+              "type": "doc",
+              "id": "about-apk/performance-test-results/gateway-router-with-one-cpu",
+              "label": "Gateway router with one CPU"
+            },
+            {
+              "type": "doc",
+              "id": "about-apk/performance-test-results/gateway-router-with-two-cpus",
+              "label": "Gateway router with two CPUs"
+            },
+            {
+              "type": "doc",
+              "id": "about-apk/performance-test-results/two-gateways-of-two-cpus-with-rate-limit",
+              "label": "Multi Gateways with two CPUs with Rate Limiting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Reach Out",
+      "items": [
+        {
+          "type": "doc",
+          "id": "reachout/community",
+          "label": "Community"
+        },
+        {
+          "type": "link",
+          "label": "Support",
+          "href": "https://wso2.com/subscription/#support"
+        },
+        {
+          "type": "link",
+          "label": "Training and Certification",
+          "href": "https://wso2.com/training/"
+        },
+        {
+          "type": "link",
+          "label": "Resources",
+          "href": "https://wso2.com/library/"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "about-apk/FAQs",
+      "label": "FAQs"
+    }
+  ]
+}
